@@ -14,47 +14,22 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
+
         Scanner sc = new Scanner(System.in);
-        String cep = "";
-        List<String> resultados = new ArrayList<>();
 
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
+        System.out.println("Digite um número de CEP para consulta: ");
+        var cep = sc.nextLine();
 
-        HttpClient client = HttpClient.newHttpClient();
+        ConsultaCEP consulta = new ConsultaCEP();
 
-
-        while (!cep.equalsIgnoreCase("sair")) {
-            System.out.println("Digite um cep com 8 dígitos: ");
-            cep = sc.nextLine();
-
-            if(cep.equalsIgnoreCase("sair")){
-                break;
-            }
-            String endereco = "https://viacep.com.br/ws/" + cep + "/json/";
-
-            try {
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(endereco))
-                        .build();
-                HttpResponse<String> response = client
-                        .send(request, HttpResponse.BodyHandlers.ofString());
-
-                String json = response.body();
-
-                System.out.println("Resposta da API: " + json);
-                resultados.add(json);
-            }catch (IOException | InterruptedException e){
-                System.out.println("Erro ao buscar o CEP: " + e.getMessage());
-            }
-        }
-
-        try(FileWriter writer = new FileWriter("enderecos.json")){
-            writer.write(gson.toJson(resultados));
-            System.out.println("Dados salvos em enderecos.json");
-        }catch (IOException e){
-            System.out.println("Erro ao salvar o arquivo: " + e.getMessage());
+        try{
+            Endereco novoEndereco = consulta.buscaEndereco(cep);
+            System.out.println(novoEndereco);
+            GeradorDeArquivos gerador = new GeradorDeArquivos();
+            gerador.geraJson(novoEndereco);
+        }catch (RuntimeException e){
+            System.out.println(e.getMessage());
+            System.out.println("Finalizando aplicação");
         }
 
     }
