@@ -1,0 +1,4 @@
+[
+  "{\n  \"cep\": \"38412-774\",\n  \"logradouro\": \"Rua Cleusa Maria Carolina\",\n  \"complemento\": \"\",\n  \"unidade\": \"\",\n  \"bairro\": \"Jardim Canaã\",\n  \"localidade\": \"Uberlândia\",\n  \"uf\": \"MG\",\n  \"estado\": \"Minas Gerais\",\n  \"regiao\": \"Sudeste\",\n  \"ibge\": \"3170206\",\n  \"gia\": \"\",\n  \"ddd\": \"34\",\n  \"siafi\": \"5403\"\n}",
+  "{\n  \"cep\": \"03164-300\",\n  \"logradouro\": \"Rua Visconde de Parnaíba\",\n  \"complemento\": \"de 1251/1252 a 2200/2201\",\n  \"unidade\": \"\",\n  \"bairro\": \"Mooca\",\n  \"localidade\": \"São Paulo\",\n  \"uf\": \"SP\",\n  \"estado\": \"São Paulo\",\n  \"regiao\": \"Sudeste\",\n  \"ibge\": \"3550308\",\n  \"gia\": \"1004\",\n  \"ddd\": \"11\",\n  \"siafi\": \"7107\"\n}"
+]
